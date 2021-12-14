@@ -4,11 +4,13 @@ import com.xjzspace.article.domain.article.types.*;
 import com.xjzspace.article.domain.comment.Comment;
 import com.xjzspace.core.IAggregateRoot;
 import com.xjzspace.core.annotation.AggregateRoot;
+import lombok.Builder;
 
 import java.util.Date;
 import java.util.List;
 
 @AggregateRoot
+@Builder
 public class Article implements IAggregateRoot<Long> {
 
     private Long articleId;
@@ -85,4 +87,6 @@ public class Article implements IAggregateRoot<Long> {
     private Date createDate;
 
     private Date updateDate;
+
+
 }
