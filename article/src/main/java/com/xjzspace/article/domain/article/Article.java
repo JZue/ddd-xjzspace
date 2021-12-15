@@ -89,4 +89,9 @@ public class Article implements IAggregateRoot<Long> {
     private Date updateDate;
 
 
+    public void auditById(Long articleId, int flag) {
+
+    }
+
+
 }
