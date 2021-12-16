@@ -1,6 +1,8 @@
 package com.xjzspace.article.api.article;
 
 
+import com.xjzspace.article.api.article.dto.ArticleDetailDTO;
+import com.xjzspace.article.api.article.dto.ArticleRecommendDTO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,11 +18,11 @@ public class ArticleController {
     @JzueLog
     public String getArticleByUrl(@PathVariable String articleUrl, Model model, HttpServletRequest request){
 
-        ArticleDetailVo articleDetailVo =articleService.getDetailByUrl(articleUrl);
+        ArticleDetailDTO articleDetailVo =articleService.getDetailByUrl(articleUrl);
         if (articleDetailVo == null) {
             return "404";
         }
-        List<ArticleRecommendVo> articleRecommendVo=articleService.getRecommondArticle(Constant.ArticlePlace.GOOD_PAGE);
+        List<ArticleRecommendDTO> articleRecommendVo=articleService.getRecommondArticle(Constant.ArticlePlace.GOOD_PAGE);
         List<Comment> comments = commentService.getCommentList(articleDetailVo.getId());
         ArticleTimeAxis pre=articleService.getPreArticle(articleDetailVo.getId());
         ArticleTimeAxis next=articleService.getNextArticle(articleDetailVo.getId());
